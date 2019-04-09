@@ -1,19 +1,20 @@
 {
-  "name": "picturesque-dist",
+  "name": "terminaltxt-distribution",
   "version": "0.0.0",
-  "description": "Distribution of picturesque library.",
-  "main": "index.js",
+  "description": "Distribution of TerminalTXT library.",
+  "main": "dist/terminaltxt.js",
+  "types": "dist/terminaltxt.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/figraham/picturesque-dist.git"
+    "url": "git+https://github.com/figraham/terminaltxt-distribution.git"
   },
   "author": "Fi Graham",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/figraham/picturesque-dist/issues"
+    "url": "https://github.com/figraham/terminaltxt-distribution/issues"
   },
-  "homepage": "https://github.com/figraham/picturesque-dist#readme"
+  "homepage": "https://github.com/figraham/terminaltxt-distribution#readme"
 }
