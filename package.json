@@ -1,5 +1,5 @@
 {
-  "name": "terminaltxt-distribution",
+  "name": "terminaltxt",
   "version": "0.0.1",
   "description": "Distribution of TerminalTXT library.",
   "main": "dist/terminaltxt.js",
