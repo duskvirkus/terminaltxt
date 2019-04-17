@@ -1,6 +1,6 @@
 {
   "name": "terminaltxt-distribution",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Distribution of TerminalTXT library.",
   "main": "dist/terminaltxt.js",
   "types": "dist/terminaltxt.d.ts",
