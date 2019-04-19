@@ -124,11 +124,47 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Cha
 /*!******************!*\
   !*** ./index.ts ***!
   \******************/
-/*! exports provided: CharacterSet, CommandTerminal, GraphicsTerminal */
+/*! exports provided: CharacterSet, InputTracker, KeyEventType, CommandTerminal, GraphicsTerminal */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _characterset_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./characterset/index */ \"./characterset/index.ts\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"CharacterSet\", function() { return _characterset_index__WEBPACK_IMPORTED_MODULE_0__[\"CharacterSet\"]; });\n\n/* harmony import */ var _terminal_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./terminal/index */ \"./terminal/index.ts\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"CommandTerminal\", function() { return _terminal_index__WEBPACK_IMPORTED_MODULE_1__[\"CommandTerminal\"]; });\n\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"GraphicsTerminal\", function() { return _terminal_index__WEBPACK_IMPORTED_MODULE_1__[\"GraphicsTerminal\"]; });\n\n\r\n\r\n\n\n//# sourceURL=webpack://terminaltxt/./index.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _characterset_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./characterset/index */ \"./characterset/index.ts\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"CharacterSet\", function() { return _characterset_index__WEBPACK_IMPORTED_MODULE_0__[\"CharacterSet\"]; });\n\n/* harmony import */ var _input_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./input/index */ \"./input/index.ts\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"InputTracker\", function() { return _input_index__WEBPACK_IMPORTED_MODULE_1__[\"InputTracker\"]; });\n\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"KeyEventType\", function() { return _input_index__WEBPACK_IMPORTED_MODULE_1__[\"KeyEventType\"]; });\n\n/* harmony import */ var _terminal_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./terminal/index */ \"./terminal/index.ts\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"CommandTerminal\", function() { return _terminal_index__WEBPACK_IMPORTED_MODULE_2__[\"CommandTerminal\"]; });\n\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"GraphicsTerminal\", function() { return _terminal_index__WEBPACK_IMPORTED_MODULE_2__[\"GraphicsTerminal\"]; });\n\n\r\n\r\n\r\n\n\n//# sourceURL=webpack://terminaltxt/./index.ts?");
+
+/***/ }),
+
+/***/ "./input/InputTracker.ts":
+/*!*******************************!*\
+  !*** ./input/InputTracker.ts ***!
+  \*******************************/
+/*! exports provided: InputTracker */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"InputTracker\", function() { return InputTracker; });\n/* harmony import */ var _KeyEventType__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./KeyEventType */ \"./input/KeyEventType.ts\");\n\r\n/**\r\n * Tracks Keyboard Input from User and executes actions that have been added to [[actions]].\r\n */\r\nvar InputTracker = /** @class */ (function () {\r\n    /**\r\n     *\r\n     */\r\n    function InputTracker() {\r\n        /**\r\n         * List of [[KeyAction]] to execute if certain keys have ben pressed.\r\n         */\r\n        this.actions = [];\r\n        /**\r\n         * Will log keyboard presses to console to assist with designing.\r\n         */\r\n        this.logKeys = false;\r\n        this.handleKey = this.handleKey.bind(this);\r\n        document.addEventListener('keydown', this.handleKey);\r\n        document.addEventListener('keyup', this.handleKey);\r\n        document.addEventListener('keypress', this.handleKey);\r\n    }\r\n    /**\r\n     * Will add a [[KeyAction]] to [[actions]].\r\n     *\r\n     * @param action\r\n     */\r\n    InputTracker.prototype.addAction = function (action) {\r\n        this.actions.push(action);\r\n    };\r\n    /**\r\n     * Sets [[logKeys]].\r\n     *\r\n     * @param logKeys\r\n     */\r\n    InputTracker.prototype.setLogKeys = function (logKeys) {\r\n        this.logKeys = logKeys;\r\n    };\r\n    /**\r\n     * Connected to event listeners and will call [[actions]] if [[KeyAction]].keys show up in an event.\r\n     *\r\n     * @param event\r\n     */\r\n    InputTracker.prototype.handleKey = function (event) {\r\n        if (this.logKeys) {\r\n            console.log(\"InputTracker Key Log: '\" + event.key + \"', type: \" + event.type);\r\n        }\r\n        for (var i = 0; i < this.actions.length; i++) {\r\n            if (this.actions[i].keys.indexOf(event.key) !== -1) {\r\n                if (event.type === 'keydown' && this.actions[i].keyEventType === _KeyEventType__WEBPACK_IMPORTED_MODULE_0__[\"KeyEventType\"].KEYDOWN) {\r\n                    this.actions[i].action();\r\n                }\r\n                else if (event.type === 'keyup' && this.actions[i].keyEventType === _KeyEventType__WEBPACK_IMPORTED_MODULE_0__[\"KeyEventType\"].KEYUP) {\r\n                    this.actions[i].action();\r\n                }\r\n                else if (event.type === 'keypress' && this.actions[i].keyEventType === _KeyEventType__WEBPACK_IMPORTED_MODULE_0__[\"KeyEventType\"].KEYPRESS) {\r\n                    this.actions[i].action();\r\n                }\r\n            }\r\n        }\r\n    };\r\n    return InputTracker;\r\n}());\r\n\r\n\n\n//# sourceURL=webpack://terminaltxt/./input/InputTracker.ts?");
+
+/***/ }),
+
+/***/ "./input/KeyEventType.ts":
+/*!*******************************!*\
+  !*** ./input/KeyEventType.ts ***!
+  \*******************************/
+/*! exports provided: KeyEventType */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"KeyEventType\", function() { return KeyEventType; });\n/**\r\n * Enum of Key Event types outlined by javascript. More information can be found in the mozilla documentation: [keydown](https://developer.mozilla.org/en-US/docs/Web/API/Document/keydown_event), [keyup](https://developer.mozilla.org/en-US/docs/Web/API/Document/keyup_event), [keypress](https://developer.mozilla.org/en-US/docs/Web/Events/keypress).\r\n */\r\nvar KeyEventType;\r\n(function (KeyEventType) {\r\n    /**\r\n     * Corresponds to document.keydown event.\r\n     */\r\n    KeyEventType[KeyEventType[\"KEYDOWN\"] = 0] = \"KEYDOWN\";\r\n    /**\r\n     * Corresponds to document.keyup event.\r\n     */\r\n    KeyEventType[KeyEventType[\"KEYUP\"] = 1] = \"KEYUP\";\r\n    /**\r\n     * Corresponds to document.keypress event.\r\n     */\r\n    KeyEventType[KeyEventType[\"KEYPRESS\"] = 2] = \"KEYPRESS\";\r\n})(KeyEventType || (KeyEventType = {}));\r\n\n\n//# sourceURL=webpack://terminaltxt/./input/KeyEventType.ts?");
+
+/***/ }),
+
+/***/ "./input/index.ts":
+/*!************************!*\
+  !*** ./input/index.ts ***!
+  \************************/
+/*! exports provided: InputTracker, KeyEventType */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _InputTracker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./InputTracker */ \"./input/InputTracker.ts\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"InputTracker\", function() { return _InputTracker__WEBPACK_IMPORTED_MODULE_0__[\"InputTracker\"]; });\n\n/* harmony import */ var _KeyEventType__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./KeyEventType */ \"./input/KeyEventType.ts\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"KeyEventType\", function() { return _KeyEventType__WEBPACK_IMPORTED_MODULE_1__[\"KeyEventType\"]; });\n\n\r\n\r\n\n\n//# sourceURL=webpack://terminaltxt/./input/index.ts?");
 
 /***/ }),
 
