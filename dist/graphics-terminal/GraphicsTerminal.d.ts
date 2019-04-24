@@ -1,15 +1,23 @@
 import { CharacterSet } from '../characterset/CharacterSet';
-import { Terminal } from './Terminal';
-import { TerminalCellData } from './TerminalCellData';
-import { TerminalConfig } from './TerminalConfig';
+import { TerminalConfig } from '../config/TerminalConfig';
+import { DOMCellController } from '../dom-controller/DOMCellController';
+import { CellData } from './CellData';
 /**
  * Graphical Terminal for text art rendering.
  */
-export declare class GraphicsTerminal extends Terminal {
+export declare class GraphicsTerminal {
+    /**
+     * [[DOMCellController]] associated with this GraphicsTerminal.
+     */
+    protected cellController: DOMCellController;
     /**
      * Cell data for this instance of GraphicsTerminal. see [[TerminalCellData]]
      */
-    protected cellData: TerminalCellData;
+    protected cellData: CellData;
+    /**
+     * [[CharacterSet]] associated with this Terminal.
+     */
+    protected characterSet: CharacterSet;
     /**
      * Height of graphics terminal.
      */
@@ -22,6 +30,10 @@ export declare class GraphicsTerminal extends Terminal {
      * @param config [[TerminalConfig]]
      */
     constructor(config?: TerminalConfig, characterSet?: CharacterSet);
+    /**
+     * @returns [[characterSet]]
+     */
+    getCharacterSet(): CharacterSet;
     /**
      * @returns [[height]]
      */

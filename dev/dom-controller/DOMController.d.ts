@@ -1,7 +1,7 @@
 /**
  * Keeps track of Terminal's DOM elements and is used for updating them.
  */
-export declare class TerminalDOM {
+export declare class DOMController {
     /**
      * Keeps track of number of ids that have been created.
      */

@@ -1,7 +1,7 @@
 /**
- * Used to keep track of the data behind a GraphicsTerminal
+ * Used to keep track of the data behind a [[GraphicsTerminal]].
  */
-export declare class TerminalCellData {
+export declare class CellData {
     /**
      * Array of booleans to keep track of what data has been changed since last update.
      */

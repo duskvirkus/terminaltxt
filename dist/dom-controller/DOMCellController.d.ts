@@ -1,5 +1,8 @@
-import { TerminalDOM } from "./TerminalDOM";
-export declare class TerminalCellDOM extends TerminalDOM {
+import { DOMController } from "./DOMController";
+/**
+ * Creates and has methods to update a Terminal DOM that contains cells in a grid pattern.
+ */
+export declare class DOMCellController extends DOMController {
     /**
      * Span elements that hold characters.
      */
@@ -7,17 +10,25 @@ export declare class TerminalCellDOM extends TerminalDOM {
     /**
      * Height of instance.
      */
-    height: number;
+    protected height: number;
     /**
      * Width of instance.
      */
-    width: number;
+    protected width: number;
     /**
      * @param width
      * @param height
      * @param container
      */
     constructor(width: number, height: number, container?: HTMLDivElement);
+    /**
+     * @returns [[height]]
+     */
+    getHeight(): number;
+    /**
+     * @returns [[width]]
+     */
+    getWidth(): number;
     /**
      * Get index of cell in cells array based on column and row values.
      *
