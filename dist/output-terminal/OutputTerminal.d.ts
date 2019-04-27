@@ -16,7 +16,11 @@ export declare class OutputTerminal {
      */
     protected lineController: DOMLineController;
     /**
-     * Width of OutputTerminal
+     * Record of the number of lines to check for [[overwrite]].
+     */
+    protected linesToCheck: number;
+    /**
+     * Width of OutputTerminal. -1 is unrestricted width.
      */
     protected width: number;
     /**
@@ -36,6 +40,16 @@ export declare class OutputTerminal {
      * Adds a line break. Helpful when using [[write]].
      */
     newLine(): void;
+    /**
+     * Will overwrite last text if the first character matches. Otherwise it will [[writeln]]. Is marginally slower than [[writeln]].
+     *
+     * @param text
+     */
+    overwrite(text: string): void;
+    /**
+     * Resets [[linesToCheck]] to 0.
+     */
+    resetLinesToCheck(): void;
     /**
      * Writes to current line on output terminal if space. If there is not enough space on the current line it will roll over to the next.
      *
