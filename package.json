@@ -1,6 +1,6 @@
 {
   "name": "terminaltxt",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A typescript creative coding library / game engine for ASCII and text art reminiscent of Terminal graphics. NPM package is distribution only.",
   "main": "dist/terminaltxt.js",
   "types": "dist/terminaltxt.d.ts",
