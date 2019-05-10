@@ -1,8 +1,9 @@
+import { Indexable } from "../utils/get-index";
 import { DOMController } from "./DOMController";
 /**
  * Creates and has methods to update a Terminal DOM that contains cells in a grid pattern.
  */
-export declare class DOMCellController extends DOMController {
+export declare class DOMCellController extends DOMController implements Indexable {
     /**
      * Span elements that hold characters.
      */
@@ -30,14 +31,6 @@ export declare class DOMCellController extends DOMController {
      */
     getWidth(): number;
     /**
-     * Get index of cell in cells array based on column and row values.
-     *
-     * @param column
-     * @param row
-     * @returns index
-     */
-    index(column: number, row: number): number;
-    /**
      * Will set single cell innerHTML to a string based on cell index.
      *
      * @param value
@@ -52,6 +45,12 @@ export declare class DOMCellController extends DOMController {
      * @param row
      */
     setCellValue(value: string, column: number, row: number): void;
+    /**
+     * Set the color via css of a cell.
+     *
+     * @param color
+     */
+    setColor(index: number, color: string): void;
     /**
      * Initializes cells as empty span elements with line breaks.
      */

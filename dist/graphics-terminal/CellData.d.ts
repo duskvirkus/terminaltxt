@@ -1,7 +1,8 @@
+import { Indexable } from "../utils";
 /**
  * Used to keep track of the data behind a [[GraphicsTerminal]].
  */
-export declare class CellData {
+export declare class CellData implements Indexable {
     /**
      * Array of booleans to keep track of what data has been changed since last update.
      */
@@ -49,13 +50,6 @@ export declare class CellData {
      * @param index
      */
     hasBeenChanged(index: number): boolean;
-    /**
-     * Get index of cell based on column and row values.
-     *
-     * @param column
-     * @param row
-     */
-    index(column: number, row: number): number;
     /**
      * @returns number of cells in data
      */
